@@ -1,5 +1,8 @@
 // Runtime Error Example
 function divide(a, b) {
+    if (b ==0){
+        return "Division by zero error";
+    }
     return a / b;
 }
 
