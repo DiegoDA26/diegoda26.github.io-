@@ -20,17 +20,17 @@ function fetchGradeData(){
     //Thi is the address on the machine we're asking fot data
     let apiRoute = "/api/grades";
     // When the request change status, we run this anonymus function
-    xhr.onreadystatechange = function(){
+    xhr.onreadystatechange = function () {
         let results;
         // Check if we are done
-        if (xhr.readyState === xhr.DONE){
+        if (xhr.readyState === xhr.DONE) {
         //check if we are successful
             if (xhr.status !== 200){
                 console.error(`Could not get grades.
                     Status: ${xhr.status}`);
-        }
-        //And then call the function to update the HTML with our data
-        populateGradebook(JSON.parse(xhr.responseText));
+            }
+            //And then call the function to update the HTML with our data
+            populateGradebook(JSON.parse(xhr.responseText));
         }
     }.bind(this);
     xhr.open("get", apiRoute, true);
@@ -41,7 +41,7 @@ function populateGradebook(data){
     // This function will take the fetched grade data and populate the table
     console.log("Populating gradebook with data:", data);
     let tableElm = document.getElementById("gradebook");//Get the gradebook table element
-    data.forEach(function(assignment){ // For each row of data we're passed in
+        data.forEach(function(assignment){ // For each row of data we're passed in
         let row = document.createElement("tr"); //Create a table row element
         let colums = []; //Handy p;ace to stick the colums information
         colums.name = document.createElement('td'); // The first colum's table data will be the name
@@ -59,6 +59,7 @@ function populateGradebook(data){
         row.appendChild(colums.name);
         row.appendChild(colums.grade);
         // Add the row to the table itself to make the data visible
-        tableElm.appendChild(row);
+          tableElm.appendChild(row);
     });
 }
+fetchGradeData()
